@@ -1,13 +1,5 @@
 T = int( input() )
 
-def extGCD( a, b ):
-    # ax + by = gcd( a, b ) を解く
-    if b == 0:
-        return 1, 0, a
-    else:
-        y, x, d = extGCD( b, a % b )
-        return x, y - x * a // b, d
-
 import math
 
 ans = []
@@ -24,8 +16,8 @@ for _ in range( T ):
     S //= g
     K //= g
     
-    x, _, _ = extGCD( K, N )
-    ans.append( - x * S % N )
+    inv_k = pow( K, -1, N )
+    ans.append( - S * inv_k % N )
 
 for a in ans:
     print( a )
