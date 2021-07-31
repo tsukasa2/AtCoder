@@ -2,29 +2,18 @@ N = int( input() )
 a = list( map( int, input().split() ) )
 b = list( map( int, input().split() ) )
 
-digits_a = [ 0 for _ in range( 30 ) ]
-digits_b = [ 0 for _ in range( 30 ) ]
+b.sort()
 
-for a_i in a:
-    for i in range( 30 ):
-        digits_a[ i ] += a_i % 2
-        print( a_i % 2, end = "" )
-        a_i //= 2
-    print()
-
-print( digits_a )
-
+ans = []
 for b_i in b:
-    for i in range( 30 ):
-        digits_b[ i ] += b_i % 2
-        print( b_i % 2, end = "" )
-        b_i //= 2
-    print()
+    x = a[ 0 ] ^ b_i
+    c = [ a_i ^ x for a_i in a ]
+    c.sort()
+    if b == c:
+        ans.append( x )
 
-print( digits_b )
-
-K = int( input() )
-S = [ int( input() ) for _ in range( K ) ]
-
-for s in S:
-    print( bin( s )[ ::-1 ] )
+ans = list( set( ans ) )
+ans.sort()
+print( len( ans ) )
+if ans:
+    print( "\n".join( map( str, ans ) ) )

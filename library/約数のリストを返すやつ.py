@@ -1,3 +1,5 @@
+# ARC124 C
+
 N = int( input() )
 ab = [ tuple( map( int, input().split() ) ) for _ in range( N ) ]
 
