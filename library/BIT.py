@@ -1,5 +1,8 @@
 # ABC190 F
 
+# binary-indexed-tree
+# 初項から第n項までの和を，
+# 項の更新に対応しながら高速で求めることができる
 class Bit:
     # 1-indexed
     def __init__( self, n ):
